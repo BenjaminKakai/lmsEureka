@@ -1,24 +1,40 @@
 services:
-  - name: lms-backend
-    type: web
-    buildCommand: ./gradlew build
-    startCommand: java -jar build/libs/your-app-name.jar
-    env: java
+  - name: lmseureka
+    env: docker
+    buildCommand: ./gradlew build -x test
+    startCommand: java -jar lmseureka-0.0.1-SNAPSHOT.jar
     envVars:
-      SERVER_PORT: 8081
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://localhost:8761/eureka/
-      EUREKA_CLIENT_REGISTER-WITH-EUREKA: "true"
-      EUREKA_CLIENT_FETCH-REGISTRY: "true"
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/lmsbackend
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: co37x74bob
-      SPRING_JPA_SHOW-SQL: "true"
-      SPRING_JPA_HIBERNATE_DDL-AUTO: update
-      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB: DEBUG
-      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY: DEBUG
-      SPRING_SECURITY_USER_NAME: Benjamin
-      SPRING_SECURITY_USER_PASSWORD: co37x74bob
-      SPRING_MAIN_ALLOW-CIRCULAR-REFERENCES: "true"
-      SPRING_APPLICATION_NAME: lmsbackend
-      APP_JWTSECRET: BLde8wvZW+xspgStlAY9itRpvkzLycMKPcqaJJRdFgctE+LvYWIwfjF51uNT2du3Qi4B09tKgxF5YOUHMkDvwg==
-      APP_JWTEXPIRATIONMS: 3155760000000
+      - key: SERVER_PORT
+        value: "8081"
+      - key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+        value: "http://localhost:8761/eureka/"
+      - key: EUREKA_CLIENT_REGISTER-WITH-EUREKA
+        value: "true"
+      - key: EUREKA_CLIENT_FETCH-REGISTRY
+        value: "true"
+      - key: SPRING_DATASOURCE_URL
+        value: "jdbc:postgresql://localhost:5432/lmsbackend"
+      - key: SPRING_DATASOURCE_USERNAME
+        value: "postgres"
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: "co37x74bob"
+      - key: SPRING_JPA_SHOW-SQL
+        value: "true"
+      - key: SPRING_JPA_HIBERNATE_DDL-AUTO
+        value: "update"
+      - key: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB
+        value: "DEBUG"
+      - key: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY
+        value: "DEBUG"
+      - key: SPRING_SECURITY_USER_NAME
+        value: "Benjamin"
+      - key: SPRING_SECURITY_USER_PASSWORD
+        value: "co37x74bob"
+      - key: SPRING_MAIN_ALLOW-CIRCULAR-REFERENCES
+        value: "true"
+      - key: SPRING_APPLICATION_NAME
+        value: "lmseureka"
+      - key: APP_JWTSECRET
+        value: "BLde8wvZW+xspgStlAY9itRpvkzLycMKPcqaJJRdFgctE+LvYWIwfjF51uNT2du3Qi4B09tKgxF5YOUHMkDvwg=="
+      - key: APP_JWTEXPIRATIONMS
+        value: "3155760000000"
