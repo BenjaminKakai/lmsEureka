@@ -1,6 +1,5 @@
 services:
-  - type: web
-    name: lmseureka
+  - name: lmseureka
     env: docker
     buildCommand: ./gradlew build -x test
     startCommand: java -jar lmseureka-0.0.1-SNAPSHOT.jar
