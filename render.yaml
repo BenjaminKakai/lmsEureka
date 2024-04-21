@@ -3,6 +3,7 @@ services:
     name: lmseureka
     env: docker
     buildCommand: ./gradlew build -x test
+    startCommand: java -jar lmseureka-0.0.1-SNAPSHOT.jar
     envVars:
       - key: SERVER_PORT
         value: "8081"
